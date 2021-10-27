@@ -16,7 +16,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "bastion" {
   ami           = data.aws_ami.ubuntu.id
-  key_name      = aws_key_pair.terraform-key.terraform-key.pub
+  key_name      = "${aws_key_pair.terraform-key.terraform-key.pub}"
   instance_type = "t2.micro"
   vpc_security_group_ids = [module.my_first_module.public_sec]
   subnet_id = module.my_first_module.public_subnet_id_1
@@ -28,7 +28,7 @@ resource "aws_instance" "bastion" {
  
  resource "aws_instance" "application" {
   ami           = data.aws_ami.ubuntu.id
-  key_name      = aws_key_pair.terraform-key.terraform-key.pub
+  key_name      = "${aws_key_pair.terraform-key.terraform-key.pub}"
   instance_type = "t2.micro"
   vpc_security_group_ids = []
   subnet_id = module.my_first_module.public_subnet_id_2
