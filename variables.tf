@@ -17,3 +17,7 @@ variable "private_subnet_2_cidr"{
 variable "my_region"{
 	type = string
 }
+
+variable "ssh_key" {
+  type = string
+}
