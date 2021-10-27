@@ -16,8 +16,9 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "bastion" {
   ami           = data.aws_ami.ubuntu.id
+  key_name      = "terraform-key"
   instance_type = "t2.micro"
-   vpc_security_group_ids = [module.my_first_module.public_sec]
+  vpc_security_group_ids = [module.my_first_module.public_sec]
   subnet_id = module.my_first_module.public_subnet_id_1
   
   provisioner "local-exec"{
@@ -27,8 +28,9 @@ resource "aws_instance" "bastion" {
  
  resource "aws_instance" "application" {
   ami           = data.aws_ami.ubuntu.id
+  key_name      = "terraform-key"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [module.my_first_module.private_sec]
+  vpc_security_group_ids = []
   subnet_id = module.my_first_module.public_subnet_id_2
  }
  
