@@ -33,3 +33,10 @@ resource "aws_instance" "bastion" {
   subnet_id = module.my_first_module.public_subnet_id_2
  }
  
+  resource "aws_instance" "test" {
+  ami           = data.aws_ami.ubuntu.id
+ 
+  instance_type = "t2.micro"
+  vpc_security_group_ids = [module.my_first_module.public_sec]
+  subnet_id = module.my_first_module.public_subnet_id_3
+ }
