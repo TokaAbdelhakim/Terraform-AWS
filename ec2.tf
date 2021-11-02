@@ -38,5 +38,5 @@ resource "aws_instance" "bastion" {
  
   instance_type = "t2.micro"
   vpc_security_group_ids = [module.my_first_module.public_sec]
-  subnet_id = module.my_first_module.public_subnet_id_3
+  subnet_id = module.my_first_module.public_subnet_id_1
  }
